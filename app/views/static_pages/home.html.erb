@@ -2,6 +2,11 @@
 
 
 
-  <%= link_to 'Register', new_user_session_path, :remote => true, 'data-toggle' => "modal", 'data-target' => "#login-modal", method: 'get' %>
+  <%= link_to 'login', new_user_session_path %>
 
-<%=link_to "Sign up", new_user_registration_path %>
+
+
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#signupmodal">
+  Launch demo modal
+</button>
