@@ -19,17 +19,18 @@ Item.destroy_all
 		last_name: Faker::Name.last_name,
 		password: Faker::Internet.password)
 
-	puts "users created"
+	puts "user created"
 
 	card = Card.create!(
 		title: Faker::Lorem.sentence,
 		user: user)
 
-	puts "cards created"
+	puts "card created"
 
 	item = Item.create!(
-		name: Faker::Lorem.sentence)
+		name: Faker::Lorem.sentence,
+		card: card)
 
-	puts "items created"
+	puts "item created"
 
 end
