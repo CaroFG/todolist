@@ -8,8 +8,8 @@
 					
 					<% card.items.each do |item| %>
 
-					<p class="card-text"><%= item.name %>  </p>
-					<%= button_to "Supprimer l'item", item_path(item.id), method: :delete, data: { confirm: 'Êtes-vous sûr(e) ?' }, class: "fas fa-trash-alt float-right" %>
+					<p class="card-text"><%= item.name %>  
+					<%= link_to "", item_path(item.id), method: :delete, data: { confirm: 'Êtes-vous sûr(e) ?' }, class: "fas fa-trash-alt float-right" %></p>
 
 					
 					<%end%>  
