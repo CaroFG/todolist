@@ -8,8 +8,10 @@
 					
 					<% card.items.each do |item| %>
 
-					<p class="card-text"><%= item.name %></p>
-					<i class="fas fa-trash-alt"></i>
+					<p class="card-text"><%= item.name %>  </p>
+					<%= button_to "Supprimer l'item", item_path(item.id), method: :delete, data: { confirm: 'Êtes-vous sûr(e) ?' }, class: "fas fa-trash-alt float-right" %>
+
+					
 					<%end%>  
 				</div>
 			</div>
@@ -17,3 +19,4 @@
 		<%end%>
 	</div>
 </div>
+
