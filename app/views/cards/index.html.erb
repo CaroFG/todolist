@@ -9,8 +9,12 @@
 					<% card.items.each do |item| %>
 
 					<p class="card-text"><%= item.name %>  
-					<%= link_to "", item_path(item.id), method: :delete, data: { confirm: 'Êtes-vous sûr(e) ?' }, class: "fas fa-trash-alt float-right" %></p>
+					<%= link_to "", item_path(item.id), method: :delete, data: { confirm: 'Êtes-vous sûr(e) ?' }, class: "fas fa-trash-alt float-right" %>
+		
+					<i onclick="myFunction()" class="fas fa-backspace float-right pr-2"></i>
+					</p>
 
+					
 					
 					<%end%>  
 				</div>
@@ -20,3 +24,9 @@
 	</div>
 </div>
 
+<script type="text/javascript">
+	function myFunction() {
+
+	document.querySelector('.card-text').classList.toggle("test");
+	}
+</script>

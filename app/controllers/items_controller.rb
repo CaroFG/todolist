@@ -7,6 +7,11 @@ def destroy
 	end
 end
 
+def edit
+	@item = Item.find(params[:id])
+end
+
+
 def show
 end
 
