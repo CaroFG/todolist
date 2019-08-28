@@ -16,7 +16,13 @@
 
 					
 					
-					<%end%>  
+					<%end%> 
+					<%=form_tag(controller: "items", action: "create", method: "post") do%>
+					<%= text_field_tag(:name) %>
+					<%= hidden_field_tag  :card_id, card.id %>
+					<%= submit_tag %>
+					<%end%>
+			
 				</div>
 			</div>
 		</div>

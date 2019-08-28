@@ -1,5 +1,20 @@
 class ItemsController < ApplicationController
 
+def new
+	@item = Item.new
+end
+
+def create
+	@item = Item.create!(card_id: params[:card_id], name: params[:name])
+
+	if @item.save
+		redirect_to cards_path
+	else
+		redirect_to root_path
+		puts @item.errors
+	end
+end
+
 def destroy
 	@item = Item.find(params[:id])
 	if @item.destroy
