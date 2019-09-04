@@ -14,13 +14,23 @@
 				<div class="card-body">
 					<h5 class="card-title mb-4"><%= card.title %> <%= link_to "X", card_path(id: card.id), method: "delete", action: 'destroy', class: "btn btn-warning btn-sm float-right"%></h5>
 					
-					<% card.items.each do |item| %>
+					<% card.items.each do |item| 	%>
+					<% if item.checked == true %>
+					<p class="card-text test"><%= item.name %>  
+					<%= link_to "", item_path(item.id), method: :delete, data: { confirm: 'Êtes-vous sûr(e) ?' }, class: "fas fa-trash-alt float-right" %>
+					
 
+					<%= link_to "", item_path(item.id), method: "patch", class: "fas fa-backspace float-right pr-2" %>
+					</p>
+
+					<% else %>
 					<p class="card-text"><%= item.name %>  
 					<%= link_to "", item_path(item.id), method: :delete, data: { confirm: 'Êtes-vous sûr(e) ?' }, class: "fas fa-trash-alt float-right" %>
 					
-					<%= link_to "", item_path(checked: true), method: "patch", class: "fas fa-backspace float-right pr-2" %>
+
+					<%= link_to "", item_path(item.id), method: "patch", class: "fas fa-backspace float-right pr-2" %>
 					</p>
+					<%end %>
 
 					
 					
@@ -39,12 +49,10 @@
 </div>
 
 <script type="text/javascript">
-	var c = document.querySelectorAll(".card-text");
+var c = document.querySelectorAll(".card-text");
 c.forEach((item)=> {
 	item.addEventListener('click', () => {
 		item.classList.toggle("test");
-		item.checked == true;
-		console.log(item.checked);
 	})
 })
 

@@ -26,6 +26,16 @@ def edit
 	@item = Item.find(params[:id])
 end
 
+def update 
+	@item = Item.find(params[:id])
+
+		if @item.checked == false
+			@item.update(checked: true)
+		else 
+			@item.update(checked: false)
+		end
+	
+end
 
 def show
 end
