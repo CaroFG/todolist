@@ -15,6 +15,7 @@
 					<h5 class="card-title mb-4"><%= card.title %> <%= link_to "X", card_path(id: card.id), method: "delete", action: 'destroy', class: "btn btn-warning btn-sm float-right"%></h5>
 					
 					<% card.items.order(created_at: :asc).each do |item|%>
+					<p>
 					<%= content_tag(:span, item.name, :class => ['card-text', (item.checked == true ? 'test' : nil)]) %>
 
 					<%= link_to "", item_path(item.id), method: :delete, data: { confirm: 'Êtes-vous sûr(e) ?' }, class: "fas fa-trash-alt float-right" %>
@@ -59,9 +60,6 @@ barrer.forEach((barre) => {
 	})
 })
 	
-
-
-
 
 
 </script>
