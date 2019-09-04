@@ -9,6 +9,14 @@ class CardsController < ApplicationController
 	end
 
 	def create
+		@card = Card.create!(user_id: current_user.id, title: params[:title])
+
+		if @card.save
+			redirect_to cards_path
+		else
+			redirect_to root_path
+			puts @card.errors
+		end
 	end
 
 	def show
