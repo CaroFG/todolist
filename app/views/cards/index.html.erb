@@ -12,7 +12,7 @@
 		<div class="col col-3 mt-5">
 			<div class="card" style="width: 18rem;">
 				<div class="card-body">
-					<h5 class="card-title"><%= card.title %></h5>
+					<h5 class="card-title"><%= card.title %> <%= link_to "X", card_path(id: card.id), method: "delete", action: 'destroy', class: "btn btn-warning btn-sm ml-4"%></h5>
 					
 					<% card.items.each do |item| %>
 
@@ -24,7 +24,7 @@
 
 					
 					
-					<%end%> 
+					<%end%>
 					<%=form_tag(controller: "items", action: "create", method: "post") do%>
 					<%= text_field_tag(:name) %>
 					<%= hidden_field_tag  :card_id, card.id %>
