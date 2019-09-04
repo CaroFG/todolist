@@ -10,8 +10,8 @@
 
 					<p class="card-text"><%= item.name %>  
 					<%= link_to "", item_path(item.id), method: :delete, data: { confirm: 'Êtes-vous sûr(e) ?' }, class: "fas fa-trash-alt float-right" %>
-		
-					<i class="fas fa-backspace float-right pr-2"></i>
+					
+					<%= link_to "", item_path(checked: true), method: "patch", class: "fas fa-backspace float-right pr-2" %>
 					</p>
 
 					
@@ -31,12 +31,16 @@
 </div>
 
 <script type="text/javascript">
-
-var c = document.querySelectorAll(".card-text");
+	var c = document.querySelectorAll(".card-text");
 c.forEach((item)=> {
 	item.addEventListener('click', () => {
 		item.classList.toggle("test");
+		item.checked == true;
+		console.log(item.checked);
 	})
 })
+
+
+
 
 </script>
