@@ -11,7 +11,7 @@
 					<p class="card-text"><%= item.name %>  
 					<%= link_to "", item_path(item.id), method: :delete, data: { confirm: 'Êtes-vous sûr(e) ?' }, class: "fas fa-trash-alt float-right" %>
 		
-					<i onclick="myFunction()" class="fas fa-backspace float-right pr-2"></i>
+					<i class="fas fa-backspace float-right pr-2"></i>
 					</p>
 
 					
@@ -33,6 +33,10 @@
 <script type="text/javascript">
 
 var c = document.querySelectorAll(".card-text");
-console.log(c.length);
+c.forEach((item)=> {
+	item.addEventListener('click', () => {
+		item.classList.toggle("test");
+	})
+})
 
 </script>
