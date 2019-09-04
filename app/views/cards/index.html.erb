@@ -1,10 +1,18 @@
 <div class="container-fluid">
 	<div class="row">
-		<% @cards.each do |card| %>
+		<div class="col col-6">
+			<%=form_tag(action: "create", method: "post") do%>
+					<%= text_field_tag(:title) %>
+					<%= submit_tag(value= "Créer une liste") %>
+			<%end%>
+		</div>
+	</div>
+	<div class="row">
+		<% @cards.reverse.each do |card| %>
 		<div class="col col-3 mt-5">
 			<div class="card" style="width: 18rem;">
 				<div class="card-body">
-					<h5 class="card-title"><%= card.title %></h5>
+					<h5 class="card-title mb-4"><%= card.title %> <%= link_to "X", card_path(id: card.id), method: "delete", action: 'destroy', class: "btn btn-warning btn-sm float-right"%></h5>
 					
 					<% card.items.each do |item| %>
 
@@ -16,11 +24,11 @@
 
 					
 					
-					<%end%> 
+					<%end%>
 					<%=form_tag(controller: "items", action: "create", method: "post") do%>
 					<%= text_field_tag(:name) %>
 					<%= hidden_field_tag  :card_id, card.id %>
-					<%= submit_tag %>
+					<%= submit_tag(value= "Créer un item") %>
 					<%end%>
 			
 				</div>
