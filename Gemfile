@@ -64,3 +64,6 @@ gem 'table_print'
 gem 'faker'
 gem 'devise'
 gem "font-awesome-rails"
+gem 'jquery-rails'
+gem 'jquery-ui-rails', '~> 5.0', '>= 5.0.5'
+gem 'acts_as_list'

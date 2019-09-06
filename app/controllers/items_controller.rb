@@ -4,6 +4,15 @@ def new
 	@item = Item.new
 end
 
+
+def sort
+	params[:item].each_with_index do |id, index|
+		Item.where(id: id).update_all(position: index + 1)
+	end
+	head :ok
+end
+
+
 def create
 	@item = Item.create!(card_id: params[:card_id], name: params[:name])
 

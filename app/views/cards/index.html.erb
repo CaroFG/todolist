@@ -13,21 +13,23 @@
 			<div class="card" style="width: 18rem;">
 				<div class="card-body">
 					<h5 class="card-title mb-4"><%= card.title %> <%= link_to "X", card_path(id: card.id), method: "delete", action: 'destroy', class: "btn btn-warning btn-sm float-right"%></h5>
+					<div class="drag list-group" data-url="<%=sort_items_path%>">
+					<% card.items.order(position: :asc).each do |item|%>
 					
-					<% card.items.order(created_at: :asc).each do |item|%>
-					<p>
-					<%= content_tag(:span, item.name, :class => ['card-text', (item.checked == true ? 'test' : nil)]) %>
+					<%= content_tag :div, id: dom_id(item), :class => ['card-text', 'list-group-item'] do %>
+					   	<%= tag.span item.name, :class => (item.checked == true ? 'test' : nil) %>
+ 						<%= link_to "", item_path(item.id), method: :delete, data: { confirm: 'Êtes-vous sûr(e) ?' }, class: "fas fa-trash-alt float-right" %>
+ 						<%= link_to "", item_path(item.id), method: "patch", class: "fas fa-backspace float-right pr-2" %>
+ 						 <%= form_tag update_number_two_item_path(item.id), action: 'update', controller: "items", method: :put, class: "mt-4" do %>
+                    	 	<%= text_field_tag 'name', item.name, class: "form-control" %>
+                    	 	<%= submit_tag(value= "Modifier") %>
+                    		<%end%>
 
-					<%= link_to "", item_path(item.id), method: :delete, data: { confirm: 'Êtes-vous sûr(e) ?' }, class: "fas fa-trash-alt float-right" %>
-					
+					    <% end %>
 
-					<%= link_to "", item_path(item.id), method: "patch", class: "fas fa-backspace float-right pr-2" %>
-					</p>
-					 <%= form_tag update_number_two_item_path(item.id), action: 'update', controller: "items", method: :put, class: "mt-4" do %>
-					 <%= text_field_tag 'name', item.name, class: "form-control" %>
-					 <%= submit_tag(value= "Modifier") %>
-					 <%end%>
+			
 					<% end %>
+					</div>
 					<%=form_tag(controller: "items", action: "create", method: "post") do%>
 					<%= text_field_tag(:name) %>
 					<%= hidden_field_tag  :card_id, card.id %>
@@ -59,7 +61,8 @@ var getPreviousSibling = function (elem, selector) {
 
 barrer.forEach((barre) => {
 	barre.addEventListener('click', () => {
-		getPreviousSibling(barre, 'span').classList.toggle('test')
+	getPreviousSibling(barre, 'span').classList.toggle('test')
+		
 
 	})
 })
@@ -73,5 +76,10 @@ titles.forEach((title) => {
 	})
 })
 
+
+// var noBarrer = document.getElementsByClassName('.no-barrer');
+// noBarrer.forEach(no){
+// 	no.style.textDecoration = "none";
+// }
 
 </script>

@@ -10,5 +10,8 @@ Rails.application.routes.draw do
   		patch :update_number_two
   		put :update_number_two
   	end
+    collection do 
+      patch :sort
   end
+end
 end
