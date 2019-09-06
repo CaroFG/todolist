@@ -23,6 +23,10 @@
 
 					<%= link_to "", item_path(item.id), method: "patch", class: "fas fa-backspace float-right pr-2" %>
 					</p>
+					 <%= form_tag update_number_two_item_path(item.id), action: 'update', controller: "items", method: :put, class: "mt-4" do %>
+					 <%= text_field_tag 'name', item.name, class: "form-control" %>
+					 <%= submit_tag(value= "Modifier") %>
+					 <%end%>
 					<% end %>
 					<%=form_tag(controller: "items", action: "create", method: "post") do%>
 					<%= text_field_tag(:name) %>
@@ -59,7 +63,15 @@ barrer.forEach((barre) => {
 
 	})
 })
-	
+
+var titles = document.querySelectorAll('h5')
+
+
+titles.forEach((title) => {
+	title.addEventListener('click', () => {
+		title.contentEditable = "true";
+	})
+})
 
 
 </script>

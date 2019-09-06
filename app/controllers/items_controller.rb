@@ -34,6 +34,13 @@ def update
 		else 
 			@item.update(checked: false)
 		end
+
+		
+end
+
+def update_number_two
+	@item = Item.find(params[:id])
+	@item.update(name: params[:name])
 	
 end
 
